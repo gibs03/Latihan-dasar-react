@@ -32,6 +32,13 @@ const dataAwal: Pendaftar[] = [
     jurusan: 'S1 - Teknologi Informasi',
     jalur: 'KIP Kuliah',
   },
+  {
+    nama: 'Siti Rahmawati',
+    noHp: '081366554433',
+    asalSekolah: 'SMAN 3 Padang',
+    jurusan: 'D3 - Komputerisasi Akuntansi',
+    jalur: 'Reguler (Gelombang 1)',
+  },
 ]
 
 // 4. REACT HOOK: useReducer - Definisi Tipe Aksi & Fungsi Reducer
@@ -57,33 +64,48 @@ function pendaftarReducer(state: Pendaftar[], action: ActionPendaftar): Pendafta
 }
 
 // Komponen Header PMB
-function HeaderPMB() {
+interface HeaderPMBProps {
+  onDownloadBrosur: () => void
+}
+
+function HeaderPMB({ onDownloadBrosur }: HeaderPMBProps) {
   // 7. REACT HOOK: useContext - Mengambil data global dari CampusContext
   const { namaKampus, tahunAkademik, gelombangPMB } = useCampus()
 
   return (
-    <div className="pmb-banner-wrapper">
-      <div>
-        <span style={{ backgroundColor: '#fef3c7', color: '#b45309', fontWeight: 700, padding: '4px 12px', borderRadius: '20px', fontSize: '0.8rem' }}>
-          ✨ {gelombangPMB}
-        </span>
-        <h2 style={{ margin: '8px 0 4px 0', color: '#0f2e59', fontSize: '1.5rem', fontWeight: 800 }}>
-          Penerimaan Mahasiswa Baru (PMB)
+    <div className="pmb-hero-banner">
+      <div className="pmb-hero-text">
+        <div className="pmb-badge-row">
+          <span className="pmb-wave-badge">✨ {gelombangPMB}</span>
+          <span className="pmb-year-badge">T.A. {tahunAkademik}</span>
+        </div>
+        <h2 className="pmb-hero-heading">
+          Penerimaan Mahasiswa Baru (PMB Online)
         </h2>
-        <p style={{ margin: 0, color: '#475569', fontSize: '0.9rem' }}>
-          {namaKampus} — Tahun Akademik {tahunAkademik}
+        <p className="pmb-hero-sub">
+          <strong>{namaKampus}</strong> — Daftarkan diri Anda sekarang untuk mengamankan kuota program studi impian, fasilitas laboratorium canggih, dan akses beasiswa kuliah!
         </p>
-        <p style={{ margin: '8px 0 0 0', color: '#64748b', fontSize: '0.82rem' }}>
-          Daftar sekarang untuk mengamankan kuota program studi pilihanmu dan raih kesempatan beasiswa kuliah!
-        </p>
+
+        <div className="pmb-hero-actions">
+          <button onClick={onDownloadBrosur} className="btn-brosur-download">
+            📥 Unduh Panduan & Brosur PMB (PDF)
+          </button>
+          <span className="pmb-free-notice">✓ Pendaftaran Online Praktis & Cepat</span>
+        </div>
       </div>
 
-      <div>
-        <img
-          src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80"
-          alt="Mahasiswa Baru Universitas Jayanusa"
-          className="pmb-banner-img"
-        />
+      <div className="pmb-hero-media">
+        <div className="pmb-img-frame">
+          <img
+            src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80"
+            alt="Mahasiswa Baru Universitas Jayanusa"
+            className="pmb-banner-img"
+          />
+          <div className="pmb-img-overlay-card">
+            <strong>Akreditasi BAN-PT</strong>
+            <p>Baik Sekali — Ijazah Resmi Dikti</p>
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -163,24 +185,36 @@ function FormPMB({ onSubmitPMB }: FormPMBProps) {
 
   return (
     <div className="pmb-form-card">
-      <div style={{ borderBottom: '1px solid #e2e8f0', paddingBottom: '14px', marginBottom: '20px' }}>
-        <h3 style={{ margin: 0, color: '#0f2e59', fontSize: '1.25rem' }}>
-          📝 Formulir Registrasi Calon Mahasiswa Baru
-        </h3>
-        <p style={{ margin: '4px 0 0 0', color: '#64748b', fontSize: '0.88rem' }}>
-          Lengkapi biodata Anda dengan benar (Form render ke: {renderCountRef.current}).
-        </p>
+      <div className="form-card-header">
+        <div className="form-header-title-box">
+          <span className="form-icon">📝</span>
+          <div>
+            <h3 className="form-title">
+              Formulir Registrasi Calon Mahasiswa Baru (PMB Online)
+            </h3>
+            <p className="form-subtitle">
+              Silakan lengkapi biodata pendaftaran di bawah ini secara teliti dan akurat.
+            </p>
+          </div>
+        </div>
+        <span className="render-counter-pill" title="Hitungan render dengan useRef">
+          Render ke-{renderCountRef.current}
+        </span>
       </div>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="pmb-registration-form">
         <table className="form-pmb-table">
           <tbody>
+            {/* Field Nama */}
             <tr>
-              <td style={{ width: '250px' }}>
-                <label className="form-label">Nama Lengkap Calon Mahasiswa</label>
+              <td className="form-col-label">
+                <label className="form-label">
+                  Nama Lengkap Calon Mahasiswa <span className="req-star">*</span>
+                </label>
+                <span className="form-hint">Sesuai nama pada ijazah / rapor</span>
               </td>
               <td className="form-colon">:</td>
-              <td>
+              <td className="form-col-input">
                 {/* 3. REACT HOOK: useRef dipasang pada input ini */}
                 <input
                   ref={inputNamaRef}
@@ -194,12 +228,16 @@ function FormPMB({ onSubmitPMB }: FormPMBProps) {
               </td>
             </tr>
 
+            {/* Field No WhatsApp */}
             <tr>
-              <td>
-                <label className="form-label">Nomor WhatsApp / HP Aktif</label>
+              <td className="form-col-label">
+                <label className="form-label">
+                  Nomor WhatsApp / HP Aktif <span className="req-star">*</span>
+                </label>
+                <span className="form-hint">Untuk konfirmasi kelulusan & seleksi</span>
               </td>
               <td className="form-colon">:</td>
-              <td>
+              <td className="form-col-input">
                 <input
                   type="text"
                   className="form-input-field"
@@ -211,16 +249,20 @@ function FormPMB({ onSubmitPMB }: FormPMBProps) {
               </td>
             </tr>
 
+            {/* Field Asal Sekolah */}
             <tr>
-              <td>
-                <label className="form-label">Asal Sekolah (SMA / SMK / MA)</label>
+              <td className="form-col-label">
+                <label className="form-label">
+                  Asal Sekolah / Jurusan Asal <span className="req-star">*</span>
+                </label>
+                <span className="form-hint">SMA / SMK / MA / Sederajat</span>
               </td>
               <td className="form-colon">:</td>
-              <td>
+              <td className="form-col-input">
                 <input
                   type="text"
                   className="form-input-field"
-                  placeholder="Contoh: SMAN 1 Padang"
+                  placeholder="Contoh: SMAN 1 Padang (Jurusan IPA/IPS)"
                   value={asalSekolah}
                   onChange={(e) => setAsalSekolah(e.target.value)}
                   required
@@ -228,14 +270,18 @@ function FormPMB({ onSubmitPMB }: FormPMBProps) {
               </td>
             </tr>
 
+            {/* Field Program Studi */}
             <tr>
-              <td>
-                <label className="form-label">Pilihan Program Studi (Jurusan)</label>
+              <td className="form-col-label">
+                <label className="form-label">
+                  Pilihan Program Studi <span className="req-star">*</span>
+                </label>
+                <span className="form-hint">Tersedia jenjang Sarjana (S1), D4 & D3</span>
               </td>
               <td className="form-colon">:</td>
-              <td>
+              <td className="form-col-input">
                 <select
-                  className="form-input-field"
+                  className="form-input-field form-select"
                   value={jurusan}
                   onChange={(e) => setJurusan(e.target.value)}
                 >
@@ -248,31 +294,39 @@ function FormPMB({ onSubmitPMB }: FormPMBProps) {
               </td>
             </tr>
 
+            {/* Field Jalur Pendaftaran */}
             <tr>
-              <td>
-                <label className="form-label">Jalur Pendaftaran</label>
+              <td className="form-col-label">
+                <label className="form-label">
+                  Jalur Pendaftaran PMB <span className="req-star">*</span>
+                </label>
+                <span className="form-hint">Pilih opsi beasiswa jika memenuhi syarat</span>
               </td>
               <td className="form-colon">:</td>
-              <td>
+              <td className="form-col-input">
                 <select
-                  className="form-input-field"
+                  className="form-input-field form-select"
                   value={jalur}
                   onChange={(e) => setJalur(e.target.value)}
                 >
-                  <option value="Reguler (Gelombang 1)">Reguler (Gelombang 1) — Potongan Biaya</option>
-                  <option value="Beasiswa Prestasi">Beasiswa Prestasi (Rapor / Seni / Olahraga)</option>
-                  <option value="KIP Kuliah">Jalur KIP Kuliah (Bantuan Pemerintah)</option>
+                  <option value="Reguler (Gelombang 1)">Reguler (Gelombang 1) — Potongan Biaya Awal</option>
+                  <option value="Beasiswa Prestasi">Beasiswa Prestasi (Rapor / Seni / Olahraga / Juara)</option>
+                  <option value="KIP Kuliah">Jalur KIP Kuliah (Bantuan Pemerintah Bebas Kuliah)</option>
                 </select>
               </td>
             </tr>
 
+            {/* Submit Action */}
             <tr>
-              <td></td>
+              <td className="form-col-label"></td>
               <td className="form-colon"></td>
-              <td style={{ paddingTop: '14px' }}>
+              <td className="form-col-input" style={{ paddingTop: '16px' }}>
                 <button type="submit" className="btn-submit-pmb">
-                  Simpan Pendaftaran Sekarang ➜
+                  <span>🚀</span> Simpan & Kirim Pendaftaran Sekarang ➜
                 </button>
+                <p className="form-submit-note">
+                  🔒 Data pendaftaran Anda aman dan akan langsung terhubung ke sistem seleksi Universitas Jayanusa.
+                </p>
               </td>
             </tr>
           </tbody>
@@ -286,15 +340,16 @@ function PMB() {
   // 4. REACT HOOK: useReducer - Mengelola daftar pendaftar
   const [dataPendaftar, dispatch] = useReducer(pendaftarReducer, dataAwal)
 
-  // 1. REACT HOOK: useState - Kata kunci pencarian tabel & notifikasi
+  // 1. REACT HOOK: useState - Kata kunci pencarian tabel & notifikasi & brosur alert
   const [keywordCari, setKeywordCari] = useState('')
   const [pesanSukses, setPesanSukses] = useState<string | null>(null)
+  const [brosurNotif, setBrosurNotif] = useState(false)
   const [detikTersisa, setDetikTersisa] = useState(3600 * 24 * 7) // 7 hari dalam detik
 
   // 2. REACT HOOK: useEffect - Update document.title khusus di halaman PMB
   useEffect(() => {
     const titleLama = document.title
-    document.title = 'Form Pendaftaran PMB - Universitas Jayanusa'
+    document.title = 'Pendaftaran PMB 2026/2027 - Universitas Jayanusa Padang'
 
     return () => {
       document.title = titleLama // Cleanup saat pindah halaman
@@ -331,26 +386,26 @@ function PMB() {
     return () => clearInterval(timer) // Cleanup timer saat unmount
   }, [])
 
-  // Format detik hitung mundur ke Hari, Jam, Menit, Detik
-  const formatCountdown = (detik: number) => {
-    const d = Math.floor(detik / (3600 * 24))
-    const h = Math.floor((detik % (3600 * 24)) / 3600)
-    const m = Math.floor((detik % 3600) / 60)
-    const s = detik % 60
-    return `${d} Hari ${h} Jam ${m} Menit ${s} Detik`
-  }
+  // Format detik hitung mundur ke komponen Hari, Jam, Menit, Detik
+  const countdownParts = useMemo(() => {
+    const d = Math.floor(detikTersisa / (3600 * 24))
+    const h = Math.floor((detikTersisa % (3600 * 24)) / 3600)
+    const m = Math.floor((detikTersisa % 3600) / 60)
+    const s = detikTersisa % 60
+    return { d, h, m, s }
+  }, [detikTersisa])
 
   // 5. REACT HOOK: useCallback - Memoize fungsi penambahan pendaftar
   const handleTambahPendaftar = useCallback((dataBaru: Pendaftar) => {
     dispatch({ type: 'TAMBAH_PENDAFTAR', payload: dataBaru })
-    setPesanSukses(`Data calon mahasiswa "${dataBaru.nama}" berhasil disimpan ke sistem!`)
+    setPesanSukses(`Selamat! Data calon mahasiswa "${dataBaru.nama}" berhasil disimpan ke sistem PMB Universitas Jayanusa.`)
   }, [])
 
   // 5. REACT HOOK: useCallback - Memoize fungsi penghapusan pendaftar
   const handleHapusPendaftar = useCallback((indexHapus: number) => {
-    if (confirm('Apakah Anda yakin ingin menghapus data pendaftar ini?')) {
+    if (confirm('Apakah Anda yakin ingin menghapus data pendaftar ini dari sistem PMB?')) {
       dispatch({ type: 'HAPUS_PENDAFTAR', payload: indexHapus })
-      setPesanSukses('Data pendaftar berhasil dihapus.')
+      setPesanSukses('Data pendaftar telah berhasil dihapus.')
     }
   }, [])
 
@@ -372,31 +427,83 @@ function PMB() {
     const total = dataPendaftar.length
     const beasiswa = dataPendaftar.filter((p) => p.jalur.includes('Beasiswa') || p.jalur.includes('KIP')).length
     const reguler = total - beasiswa
-    return { total, beasiswa, reguler }
+    const sisaKuota = Math.max(0, 50 - total)
+    return { total, beasiswa, reguler, sisaKuota }
   }, [dataPendaftar])
+
+  const handleDownloadBrosur = () => {
+    setBrosurNotif(true)
+    setTimeout(() => setBrosurNotif(false), 5000)
+  }
 
   return (
     <div className="page-card">
-      <HeaderPMB />
+      <HeaderPMB onDownloadBrosur={handleDownloadBrosur} />
+
+      {/* Notifikasi Brosur Diunduh */}
+      {brosurNotif && (
+        <div className="alert-info-banner">
+          <span>📄</span>
+          <div style={{ flex: 1 }}>
+            <strong>Brosur PMB Universitas Jayanusa Siap!</strong> Rincian kurikulum, biaya kuliah, dan panduan beasiswa 2026/2027 telah disiapkan untuk Anda.
+          </div>
+          <button onClick={() => setBrosurNotif(false)} className="btn-close-alert">✕</button>
+        </div>
+      )}
 
       {/* Countdown Timer Batas Pendaftaran (Efek dari useEffect) */}
-      <div style={{ backgroundColor: '#fffbeb', border: '1px solid #fde68a', borderRadius: '8px', padding: '12px 18px', marginBottom: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
-        <span style={{ color: '#92400e', fontWeight: 600, fontSize: '0.88rem' }}>
-          ⏳ Batas Akhir Pendaftaran Gelombang 1:
-        </span>
-        <span style={{ color: '#b45309', fontWeight: 800, fontSize: '0.95rem' }}>
-          {formatCountdown(detikTersisa)}
-        </span>
+      <div className="countdown-timer-box">
+        <div className="countdown-left">
+          <span className="clock-icon">⏳</span>
+          <div>
+            <strong>Batas Akhir Pendaftaran PMB Gelombang 1</strong>
+            <p>Segera submit pendaftaran Anda sebelum sistem ditutup!</p>
+          </div>
+        </div>
+        <div className="countdown-clock-grid">
+          <div className="clock-unit">
+            <span className="clock-num">{countdownParts.d}</span>
+            <span className="clock-lbl">Hari</span>
+          </div>
+          <div className="clock-sep">:</div>
+          <div className="clock-unit">
+            <span className="clock-num">{String(countdownParts.h).padStart(2, '0')}</span>
+            <span className="clock-lbl">Jam</span>
+          </div>
+          <div className="clock-sep">:</div>
+          <div className="clock-unit">
+            <span className="clock-num">{String(countdownParts.m).padStart(2, '0')}</span>
+            <span className="clock-lbl">Menit</span>
+          </div>
+          <div className="clock-sep">:</div>
+          <div className="clock-unit">
+            <span className="clock-num">{String(countdownParts.s).padStart(2, '0')}</span>
+            <span className="clock-lbl">Detik</span>
+          </div>
+        </div>
       </div>
 
-      {/* Alert Notifikasi Sukses */}
+      {/* Syarat Pendaftaran PMB Quick Checklist */}
+      <div className="pmb-requirements-strip">
+        <div className="req-header">
+          <span className="req-title-badge">📌 SYARAT BERKAS PMB:</span>
+        </div>
+        <div className="req-items-list">
+          <span className="req-item-pill">1. Fotokopi Ijazah / SKL Legalitas</span>
+          <span className="req-item-pill">2. Fotokopi KTP / Kartu Keluarga</span>
+          <span className="req-item-pill">3. Pasfoto 3x4 (Latar Merah / Biru)</span>
+          <span className="req-item-pill">4. Rapor Smt 1-5 (Khusus Beasiswa/KIP)</span>
+        </div>
+      </div>
+
+      {/* Alert Notifikasi Sukses Simpan */}
       {pesanSukses && (
         <div className="alert-success">
           <span>✅</span>
           <div style={{ flex: 1 }}>{pesanSukses}</div>
           <button
             onClick={() => setPesanSukses(null)}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', fontWeight: 'bold', color: '#065f46' }}
+            className="btn-close-alert"
           >
             ✕
           </button>
@@ -407,59 +514,79 @@ function PMB() {
       <FormPMB onSubmitPMB={handleTambahPendaftar} />
 
       {/* Statistik Ringkas Hasil dari useMemo */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', margin: '24px 0 16px' }}>
-        <div style={{ background: '#f0f9ff', border: '1px solid #bae6fd', padding: '12px', borderRadius: '8px', textAlign: 'center' }}>
-          <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#0369a1' }}>{statistik.total}</div>
-          <div style={{ fontSize: '0.8rem', color: '#0284c7' }}>Total Pendaftar</div>
+      <div className="pmb-stats-dashboard">
+        <div className="pmb-stat-card card-total">
+          <div className="pmb-stat-top">
+            <span className="pmb-stat-icon">👥</span>
+            <span className="pmb-stat-tag">Terkonfirmasi</span>
+          </div>
+          <div className="pmb-stat-number">{statistik.total}</div>
+          <div className="pmb-stat-title">Total Pendaftar Masuk</div>
         </div>
-        <div style={{ background: '#fef3c7', border: '1px solid #fde68a', padding: '12px', borderRadius: '8px', textAlign: 'center' }}>
-          <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#b45309' }}>{statistik.beasiswa}</div>
-          <div style={{ fontSize: '0.8rem', color: '#92400e' }}>Jalur Beasiswa / KIP</div>
+
+        <div className="pmb-stat-card card-scholarship">
+          <div className="pmb-stat-top">
+            <span className="pmb-stat-icon">⭐</span>
+            <span className="pmb-stat-tag">Prestasi & KIP</span>
+          </div>
+          <div className="pmb-stat-number">{statistik.beasiswa}</div>
+          <div className="pmb-stat-title">Jalur Beasiswa / KIP</div>
         </div>
-        <div style={{ background: '#f1f5f9', border: '1px solid #cbd5e1', padding: '12px', borderRadius: '8px', textAlign: 'center' }}>
-          <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#334155' }}>{statistik.reguler}</div>
-          <div style={{ fontSize: '0.8rem', color: '#64748b' }}>Jalur Reguler</div>
+
+        <div className="pmb-stat-card card-regular">
+          <div className="pmb-stat-top">
+            <span className="pmb-stat-icon">🎓</span>
+            <span className="pmb-stat-tag">Gelombang 1</span>
+          </div>
+          <div className="pmb-stat-number">{statistik.reguler}</div>
+          <div className="pmb-stat-title">Jalur Reguler</div>
+        </div>
+
+        <div className="pmb-stat-card card-quota">
+          <div className="pmb-stat-top">
+            <span className="pmb-stat-icon">🔥</span>
+            <span className="pmb-stat-tag">Sisa Kuota</span>
+          </div>
+          <div className="pmb-stat-number">{statistik.sisaKuota}</div>
+          <div className="pmb-stat-title">Kursi Tersedia</div>
         </div>
       </div>
 
       {/* Filter Pencarian (useState & useMemo) & Tombol Reset (useReducer) */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginTop: '20px' }}>
-        <input
-          type="text"
-          placeholder="🔍 Cari nama, sekolah, atau jurusan..."
-          value={keywordCari}
-          onChange={(e) => setKeywordCari(e.target.value)}
-          style={{
-            padding: '8px 14px',
-            border: '1px solid #cbd5e1',
-            borderRadius: '6px',
-            width: '100%',
-            maxWidth: '320px',
-            fontSize: '0.9rem',
-          }}
-        />
+      <div className="table-controls-bar">
+        <div className="search-input-wrap">
+          <span className="search-icon">🔍</span>
+          <input
+            type="text"
+            placeholder="Cari berdasarkan nama mahasiswa, sekolah, atau program studi..."
+            value={keywordCari}
+            onChange={(e) => setKeywordCari(e.target.value)}
+            className="search-input-field"
+          />
+          {keywordCari && (
+            <button onClick={() => setKeywordCari('')} className="btn-clear-search">✕</button>
+          )}
+        </div>
 
-        <button
-          onClick={() => {
-            if (confirm('Kembalikan data ke daftar awal bawaan?')) {
-              dispatch({ type: 'RESET_PENDAFTAR' })
-              localStorage.removeItem('pmb_jayanusa_data')
-              setPesanSukses('Data pendaftar berhasil direset ke data awal.')
-            }
-          }}
-          style={{
-            backgroundColor: '#f1f5f9',
-            border: '1px solid #cbd5e1',
-            borderRadius: '6px',
-            padding: '8px 14px',
-            fontSize: '0.82rem',
-            cursor: 'pointer',
-            fontWeight: 600,
-            color: '#475569',
-          }}
-        >
-          🔄 Reset Data Bawaan
-        </button>
+        <div className="table-actions-right">
+          <span className="filter-count-badge">
+            Menampilkan <strong>{pendaftarTerfilter.length}</strong> dari <strong>{dataPendaftar.length}</strong> pendaftar
+          </span>
+
+          <button
+            onClick={() => {
+              if (confirm('Apakah Anda yakin ingin mengembalikan data pendaftar ke data awal bawaan?')) {
+                dispatch({ type: 'RESET_PENDAFTAR' })
+                localStorage.removeItem('pmb_jayanusa_data')
+                setPesanSukses('Data pendaftar berhasil direset ke data awal bawaan.')
+              }
+            }}
+            className="btn-reset-data"
+            title="Kembalikan data ke contoh awal"
+          >
+            🔄 Reset Data Bawaan
+          </button>
+        </div>
       </div>
 
       {/* Tabel Data Pendaftar (Props onHapus menggunakan useCallback) */}

@@ -6,6 +6,9 @@ export interface CampusContextType {
   tahunAkademik: string
   gelombangPMB: string
   kontakWA: string
+  kontakTelp: string
+  kontakEmail: string
+  alamatKampus: string
   tema: 'light' | 'dark'
   toggleTema: () => void
 }
@@ -26,6 +29,9 @@ export function CampusProvider({ children }: { children: ReactNode }) {
     tahunAkademik: '2026/2027',
     gelombangPMB: 'Gelombang 1 (Sisa Kuota: 45 Kursi)',
     kontakWA: '0812-3456-7890',
+    kontakTelp: '(0751) 33691 / 33692',
+    kontakEmail: 'pmb@jayanusa.ac.id',
+    alamatKampus: 'Jl. Damar No. 69, Kel. Olo, Kec. Padang Barat, Kota Padang, Sumatera Barat',
     tema,
     toggleTema,
   }

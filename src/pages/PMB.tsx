@@ -73,37 +73,51 @@ function HeaderPMB({ onDownloadBrosur }: HeaderPMBProps) {
   const { namaKampus, tahunAkademik, gelombangPMB } = useCampus()
 
   return (
-    <div className="pmb-hero-banner">
-      <div className="pmb-hero-text">
-        <div className="pmb-badge-row">
-          <span className="pmb-wave-badge">✨ {gelombangPMB}</span>
-          <span className="pmb-year-badge">T.A. {tahunAkademik}</span>
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center bg-gradient-to-br from-blue-50/90 via-slate-50 to-indigo-50/60 dark:from-slate-800/80 dark:via-slate-900 dark:to-blue-950/40 border border-blue-100 dark:border-blue-900/40 p-6 md:p-8 rounded-2xl shadow-sm mb-6">
+      <div className="lg:col-span-8">
+        <div className="flex flex-wrap items-center gap-2 mb-3">
+          <span className="bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-200 border border-amber-200 dark:border-amber-700 text-xs font-black px-3.5 py-1 rounded-full">
+            ✨ {gelombangPMB}
+          </span>
+          <span className="bg-blue-100 dark:bg-blue-950/80 text-blue-800 dark:text-blue-200 border border-blue-200 dark:border-blue-700 text-xs font-bold px-3 py-1 rounded-full">
+            T.A. {tahunAkademik}
+          </span>
         </div>
-        <h2 className="pmb-hero-heading">
-          Penerimaan Mahasiswa Baru (PMB Online)
+
+        <h2 className="text-xl md:text-3xl font-black text-slate-900 dark:text-white mb-2 tracking-tight">
+          Penerimaan Mahasiswa Baru{' '}
+          <span className="bg-gradient-to-r from-amber-500 to-amber-600 bg-clip-text text-transparent">
+            (PMB Online)
+          </span>
         </h2>
-        <p className="pmb-hero-sub">
-          <strong>{namaKampus}</strong> — Daftarkan diri Anda sekarang untuk mengamankan kuota program studi impian, fasilitas laboratorium canggih, dan akses beasiswa kuliah!
+
+        <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-5 m-0">
+          <strong className="text-slate-900 dark:text-white">{namaKampus}</strong> — Daftarkan diri Anda sekarang untuk mengamankan kuota program studi impian, fasilitas laboratorium canggih, dan akses beasiswa kuliah!
         </p>
 
-        <div className="pmb-hero-actions">
-          <button onClick={onDownloadBrosur} className="btn-brosur-download">
-            📥 Unduh Panduan & Brosur PMB (PDF)
+        <div className="flex flex-wrap items-center gap-4">
+          <button
+            onClick={onDownloadBrosur}
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs md:text-sm font-bold rounded-xl border border-slate-300 dark:border-slate-600 shadow-sm transition-all cursor-pointer"
+          >
+            <span>📥</span> Unduh Panduan & Brosur PMB (PDF)
           </button>
-          <span className="pmb-free-notice">✓ Pendaftaran Online Praktis & Cepat</span>
+          <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
+            ✓ Pendaftaran Online Praktis & Cepat
+          </span>
         </div>
       </div>
 
-      <div className="pmb-hero-media">
-        <div className="pmb-img-frame">
+      <div className="lg:col-span-4">
+        <div className="relative rounded-xl overflow-hidden shadow-md border-2 border-white dark:border-slate-800">
           <img
             src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80"
             alt="Mahasiswa Baru Universitas Jayanusa"
-            className="pmb-banner-img"
+            className="w-full h-44 object-cover"
           />
-          <div className="pmb-img-overlay-card">
-            <strong>Akreditasi BAN-PT</strong>
-            <p>Baik Sekali — Ijazah Resmi Dikti</p>
+          <div className="absolute bottom-2.5 right-2.5 bg-[#0f2e59]/90 backdrop-blur-md text-white p-2.5 rounded-lg text-right border border-white/20">
+            <strong className="block text-[11px] font-bold text-amber-400">Akreditasi BAN-PT</strong>
+            <p className="text-[10px] text-slate-200 m-0">Baik Sekali — Ijazah Resmi Dikti</p>
           </div>
         </div>
       </div>
@@ -184,153 +198,150 @@ function FormPMB({ onSubmitPMB }: FormPMBProps) {
   }
 
   return (
-    <div className="pmb-form-card">
-      <div className="form-card-header">
-        <div className="form-header-title-box">
-          <span className="form-icon">📝</span>
+    <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 md:p-8 shadow-sm mb-8">
+      {/* Form Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-700 pb-5 mb-6">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 rounded-xl flex items-center justify-center text-lg shrink-0">
+            📝
+          </div>
           <div>
-            <h3 className="form-title">
-              Formulir Registrasi Calon Mahasiswa Baru (PMB Online)
+            <h3 className="text-base md:text-lg font-black text-slate-900 dark:text-white m-0">
+              Formulir Registrasi Calon Mahasiswa Baru
             </h3>
-            <p className="form-subtitle">
+            <p className="text-xs text-slate-500 dark:text-slate-400 m-0">
               Silakan lengkapi biodata pendaftaran di bawah ini secara teliti dan akurat.
             </p>
           </div>
         </div>
-        <span className="render-counter-pill" title="Hitungan render dengan useRef">
+        <span className="inline-flex items-center gap-1.5 bg-slate-100 dark:bg-slate-700/60 text-slate-600 dark:text-slate-300 text-xs font-bold px-3 py-1.5 rounded-full self-start sm:self-auto border border-slate-200 dark:border-slate-600" title="Hitungan render dengan useRef">
+          <span className="w-2 h-2 rounded-full bg-blue-500"></span>
           Render ke-{renderCountRef.current}
         </span>
       </div>
 
-      <form onSubmit={handleSubmit} className="pmb-registration-form">
-        <table className="form-pmb-table">
-          <tbody>
-            {/* Field Nama */}
-            <tr>
-              <td className="form-col-label">
-                <label className="form-label">
-                  Nama Lengkap Calon Mahasiswa <span className="req-star">*</span>
-                </label>
-                <span className="form-hint">Sesuai nama pada ijazah / rapor</span>
-              </td>
-              <td className="form-colon">:</td>
-              <td className="form-col-input">
-                {/* 3. REACT HOOK: useRef dipasang pada input ini */}
-                <input
-                  ref={inputNamaRef}
-                  type="text"
-                  className="form-input-field"
-                  placeholder="Contoh: Muhammad Farhan"
-                  value={nama}
-                  onChange={(e) => setNama(e.target.value)}
-                  required
-                />
-              </td>
-            </tr>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Field Nama */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4 items-center">
+          <div className="md:col-span-4">
+            <label className="block text-xs md:text-sm font-bold text-slate-700 dark:text-slate-300">
+              👤 Nama Lengkap Mahasiswa <span className="text-rose-500">*</span>
+            </label>
+            <span className="text-[11px] text-slate-400">Sesuai nama pada ijazah / rapor</span>
+          </div>
+          <div className="md:col-span-8">
+            {/* 3. REACT HOOK: useRef dipasang pada input ini */}
+            <input
+              ref={inputNamaRef}
+              type="text"
+              className="w-full px-4 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl text-xs md:text-sm bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+              placeholder="Contoh: Muhammad Farhan"
+              value={nama}
+              onChange={(e) => setNama(e.target.value)}
+              required
+            />
+          </div>
+        </div>
 
-            {/* Field No WhatsApp */}
-            <tr>
-              <td className="form-col-label">
-                <label className="form-label">
-                  Nomor WhatsApp / HP Aktif <span className="req-star">*</span>
-                </label>
-                <span className="form-hint">Untuk konfirmasi kelulusan & seleksi</span>
-              </td>
-              <td className="form-colon">:</td>
-              <td className="form-col-input">
-                <input
-                  type="text"
-                  className="form-input-field"
-                  placeholder="Contoh: 081234567890"
-                  value={noHp}
-                  onChange={(e) => setNoHp(e.target.value)}
-                  required
-                />
-              </td>
-            </tr>
+        {/* Field No WhatsApp */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4 items-center">
+          <div className="md:col-span-4">
+            <label className="block text-xs md:text-sm font-bold text-slate-700 dark:text-slate-300">
+              📱 Nomor WhatsApp / HP Aktif <span className="text-rose-500">*</span>
+            </label>
+            <span className="text-[11px] text-slate-400">Untuk konfirmasi kelulusan & jadwal seleksi</span>
+          </div>
+          <div className="md:col-span-8">
+            <input
+              type="text"
+              className="w-full px-4 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl text-xs md:text-sm bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+              placeholder="Contoh: 081234567890"
+              value={noHp}
+              onChange={(e) => setNoHp(e.target.value)}
+              required
+            />
+          </div>
+        </div>
 
-            {/* Field Asal Sekolah */}
-            <tr>
-              <td className="form-col-label">
-                <label className="form-label">
-                  Asal Sekolah / Jurusan Asal <span className="req-star">*</span>
-                </label>
-                <span className="form-hint">SMA / SMK / MA / Sederajat</span>
-              </td>
-              <td className="form-colon">:</td>
-              <td className="form-col-input">
-                <input
-                  type="text"
-                  className="form-input-field"
-                  placeholder="Contoh: SMAN 1 Padang (Jurusan IPA/IPS)"
-                  value={asalSekolah}
-                  onChange={(e) => setAsalSekolah(e.target.value)}
-                  required
-                />
-              </td>
-            </tr>
+        {/* Field Asal Sekolah */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4 items-center">
+          <div className="md:col-span-4">
+            <label className="block text-xs md:text-sm font-bold text-slate-700 dark:text-slate-300">
+              🏫 Asal Sekolah / Jurusan Asal <span className="text-rose-500">*</span>
+            </label>
+            <span className="text-[11px] text-slate-400">SMA / SMK / MA / Sederajat</span>
+          </div>
+          <div className="md:col-span-8">
+            <input
+              type="text"
+              className="w-full px-4 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl text-xs md:text-sm bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+              placeholder="Contoh: SMAN 1 Padang (Jurusan IPA/IPS)"
+              value={asalSekolah}
+              onChange={(e) => setAsalSekolah(e.target.value)}
+              required
+            />
+          </div>
+        </div>
 
-            {/* Field Program Studi */}
-            <tr>
-              <td className="form-col-label">
-                <label className="form-label">
-                  Pilihan Program Studi <span className="req-star">*</span>
-                </label>
-                <span className="form-hint">Tersedia jenjang Sarjana (S1), D4 & D3</span>
-              </td>
-              <td className="form-colon">:</td>
-              <td className="form-col-input">
-                <select
-                  className="form-input-field form-select"
-                  value={jurusan}
-                  onChange={(e) => setJurusan(e.target.value)}
-                >
-                  {daftarJurusan.map((item, index) => (
-                    <option key={index} value={item}>
-                      {item}
-                    </option>
-                  ))}
-                </select>
-              </td>
-            </tr>
+        {/* Field Program Studi */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4 items-center">
+          <div className="md:col-span-4">
+            <label className="block text-xs md:text-sm font-bold text-slate-700 dark:text-slate-300">
+              🎓 Pilihan Program Studi <span className="text-rose-500">*</span>
+            </label>
+            <span className="text-[11px] text-slate-400">Tersedia jenjang Sarjana (S1), D4 & D3</span>
+          </div>
+          <div className="md:col-span-8">
+            <select
+              className="w-full px-4 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl text-xs md:text-sm bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer"
+              value={jurusan}
+              onChange={(e) => setJurusan(e.target.value)}
+            >
+              {daftarJurusan.map((item, index) => (
+                <option key={index} value={item}>
+                  {item}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
 
-            {/* Field Jalur Pendaftaran */}
-            <tr>
-              <td className="form-col-label">
-                <label className="form-label">
-                  Jalur Pendaftaran PMB <span className="req-star">*</span>
-                </label>
-                <span className="form-hint">Pilih opsi beasiswa jika memenuhi syarat</span>
-              </td>
-              <td className="form-colon">:</td>
-              <td className="form-col-input">
-                <select
-                  className="form-input-field form-select"
-                  value={jalur}
-                  onChange={(e) => setJalur(e.target.value)}
-                >
-                  <option value="Reguler (Gelombang 1)">Reguler (Gelombang 1) — Potongan Biaya Awal</option>
-                  <option value="Beasiswa Prestasi">Beasiswa Prestasi (Rapor / Seni / Olahraga / Juara)</option>
-                  <option value="KIP Kuliah">Jalur KIP Kuliah (Bantuan Pemerintah Bebas Kuliah)</option>
-                </select>
-              </td>
-            </tr>
+        {/* Field Jalur Pendaftaran */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4 items-center">
+          <div className="md:col-span-4">
+            <label className="block text-xs md:text-sm font-bold text-slate-700 dark:text-slate-300">
+              🎯 Jalur Pendaftaran PMB <span className="text-rose-500">*</span>
+            </label>
+            <span className="text-[11px] text-slate-400">Pilih opsi beasiswa jika memenuhi syarat</span>
+          </div>
+          <div className="md:col-span-8">
+            <select
+              className="w-full px-4 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl text-xs md:text-sm bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all cursor-pointer"
+              value={jalur}
+              onChange={(e) => setJalur(e.target.value)}
+            >
+              <option value="Reguler (Gelombang 1)">Reguler (Gelombang 1) — Potongan Biaya Awal</option>
+              <option value="Beasiswa Prestasi">Beasiswa Prestasi (Rapor / Seni / Olahraga / Juara)</option>
+              <option value="KIP Kuliah">Jalur KIP Kuliah (Bantuan Pemerintah Bebas Kuliah)</option>
+            </select>
+          </div>
+        </div>
 
-            {/* Submit Action */}
-            <tr>
-              <td className="form-col-label"></td>
-              <td className="form-colon"></td>
-              <td className="form-col-input" style={{ paddingTop: '16px' }}>
-                <button type="submit" className="btn-submit-pmb">
-                  <span>🚀</span> Simpan & Kirim Pendaftaran Sekarang ➜
-                </button>
-                <p className="form-submit-note">
-                  🔒 Data pendaftaran Anda aman dan akan langsung terhubung ke sistem seleksi Universitas Jayanusa.
-                </p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        {/* Submit Action */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-4 items-center pt-3">
+          <div className="md:col-span-4"></div>
+          <div className="md:col-span-8">
+            <button
+              type="submit"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#0f2e59] to-[#1e4b8a] hover:from-[#091a33] hover:to-[#163b6e] text-white text-xs md:text-sm font-extrabold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+            >
+              <span>🚀</span> Simpan & Kirim Pendaftaran Sekarang ➜
+            </button>
+            <p className="text-[11px] text-slate-400 mt-2 m-0">
+              🔒 Data pendaftaran Anda aman dan akan langsung terhubung ke sistem seleksi Universitas Jayanusa.
+            </p>
+          </div>
+        </div>
       </form>
     </div>
   )
@@ -437,73 +448,82 @@ function PMB() {
   }
 
   return (
-    <div className="page-card">
+    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-10 shadow-sm transition-colors duration-300">
       <HeaderPMB onDownloadBrosur={handleDownloadBrosur} />
 
       {/* Notifikasi Brosur Diunduh */}
       {brosurNotif && (
-        <div className="alert-info-banner">
-          <span>📄</span>
-          <div style={{ flex: 1 }}>
-            <strong>Brosur PMB Universitas Jayanusa Siap!</strong> Rincian kurikulum, biaya kuliah, dan panduan beasiswa 2026/2027 telah disiapkan untuk Anda.
+        <div className="bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-800 text-sky-800 dark:text-sky-200 text-xs md:text-sm p-4 rounded-xl mb-5 flex items-center justify-between gap-3 shadow-sm">
+          <div className="flex items-center gap-2">
+            <span className="text-lg">📄</span>
+            <div>
+              <strong>Brosur PMB Universitas Jayanusa Siap!</strong> Rincian kurikulum, biaya kuliah, dan panduan beasiswa 2026/2027 telah disiapkan untuk Anda.
+            </div>
           </div>
-          <button onClick={() => setBrosurNotif(false)} className="btn-close-alert">✕</button>
+          <button onClick={() => setBrosurNotif(false)} className="text-slate-400 hover:text-slate-600 font-bold px-2 py-1 cursor-pointer">✕</button>
         </div>
       )}
 
       {/* Countdown Timer Batas Pendaftaran (Efek dari useEffect) */}
-      <div className="countdown-timer-box">
-        <div className="countdown-left">
-          <span className="clock-icon">⏳</span>
+      <div className="bg-gradient-to-r from-[#091a33] via-[#0f2e59] to-[#1e4b8a] text-white p-5 md:p-6 rounded-2xl shadow-lg mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4 border border-amber-500/30">
+        <div className="flex items-center gap-3.5">
+          <div className="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-2xl shrink-0">
+            ⏳
+          </div>
           <div>
-            <strong>Batas Akhir Pendaftaran PMB Gelombang 1</strong>
-            <p>Segera submit pendaftaran Anda sebelum sistem ditutup!</p>
+            <div className="flex items-center gap-2 flex-wrap">
+              <strong className="text-sm md:text-base font-extrabold text-white">Batas Akhir Pendaftaran PMB Gelombang 1</strong>
+              <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                Sistem Aktif
+              </span>
+            </div>
+            <p className="text-xs text-slate-300 m-0 mt-0.5">Segera submit pendaftaran Anda sebelum sistem ditutup!</p>
           </div>
         </div>
-        <div className="countdown-clock-grid">
-          <div className="clock-unit">
-            <span className="clock-num">{countdownParts.d}</span>
-            <span className="clock-lbl">Hari</span>
+
+        {/* Digit Jam */}
+        <div className="flex items-center gap-2 self-start md:self-auto">
+          <div className="bg-slate-950/60 border border-amber-500/40 rounded-xl px-3 py-2 text-center min-w-12 shadow-inner">
+            <span className="block text-lg md:text-xl font-black text-amber-400 font-mono leading-tight">{countdownParts.d}</span>
+            <span className="text-[10px] uppercase font-bold text-slate-300">Hari</span>
           </div>
-          <div className="clock-sep">:</div>
-          <div className="clock-unit">
-            <span className="clock-num">{String(countdownParts.h).padStart(2, '0')}</span>
-            <span className="clock-lbl">Jam</span>
+          <span className="text-amber-400 font-bold text-lg">:</span>
+          <div className="bg-slate-950/60 border border-amber-500/40 rounded-xl px-3 py-2 text-center min-w-12 shadow-inner">
+            <span className="block text-lg md:text-xl font-black text-amber-400 font-mono leading-tight">{String(countdownParts.h).padStart(2, '0')}</span>
+            <span className="text-[10px] uppercase font-bold text-slate-300">Jam</span>
           </div>
-          <div className="clock-sep">:</div>
-          <div className="clock-unit">
-            <span className="clock-num">{String(countdownParts.m).padStart(2, '0')}</span>
-            <span className="clock-lbl">Menit</span>
+          <span className="text-amber-400 font-bold text-lg">:</span>
+          <div className="bg-slate-950/60 border border-amber-500/40 rounded-xl px-3 py-2 text-center min-w-12 shadow-inner">
+            <span className="block text-lg md:text-xl font-black text-amber-400 font-mono leading-tight">{String(countdownParts.m).padStart(2, '0')}</span>
+            <span className="text-[10px] uppercase font-bold text-slate-300">Menit</span>
           </div>
-          <div className="clock-sep">:</div>
-          <div className="clock-unit">
-            <span className="clock-num">{String(countdownParts.s).padStart(2, '0')}</span>
-            <span className="clock-lbl">Detik</span>
+          <span className="text-amber-400 font-bold text-lg">:</span>
+          <div className="bg-slate-950/60 border border-amber-500/40 rounded-xl px-3 py-2 text-center min-w-12 shadow-inner">
+            <span className="block text-lg md:text-xl font-black text-amber-400 font-mono leading-tight">{String(countdownParts.s).padStart(2, '0')}</span>
+            <span className="text-[10px] uppercase font-bold text-slate-300">Detik</span>
           </div>
         </div>
       </div>
 
       {/* Syarat Pendaftaran PMB Quick Checklist */}
-      <div className="pmb-requirements-strip">
-        <div className="req-header">
-          <span className="req-title-badge">📌 SYARAT BERKAS PMB:</span>
-        </div>
-        <div className="req-items-list">
-          <span className="req-item-pill">1. Fotokopi Ijazah / SKL Legalitas</span>
-          <span className="req-item-pill">2. Fotokopi KTP / Kartu Keluarga</span>
-          <span className="req-item-pill">3. Pasfoto 3x4 (Latar Merah / Biru)</span>
-          <span className="req-item-pill">4. Rapor Smt 1-5 (Khusus Beasiswa/KIP)</span>
-        </div>
+      <div className="bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/70 p-4 rounded-xl mb-6 flex flex-wrap items-center gap-2 md:gap-3 text-xs">
+        <span className="font-extrabold text-slate-800 dark:text-slate-200">📌 SYARAT BERKAS:</span>
+        <span className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 py-1 rounded-full text-slate-700 dark:text-slate-300 font-medium">📄 Fotokopi Ijazah / SKL Legalitas</span>
+        <span className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 py-1 rounded-full text-slate-700 dark:text-slate-300 font-medium">🪪 Fotokopi KTP / Kartu Keluarga</span>
+        <span className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 py-1 rounded-full text-slate-700 dark:text-slate-300 font-medium">🖼️ Pasfoto 3x4 (Latar Merah / Biru)</span>
+        <span className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 py-1 rounded-full text-slate-700 dark:text-slate-300 font-medium">📊 Rapor Smt 1-5 (Khusus Beasiswa/KIP)</span>
       </div>
 
       {/* Alert Notifikasi Sukses Simpan */}
       {pesanSukses && (
-        <div className="alert-success">
-          <span>✅</span>
-          <div style={{ flex: 1 }}>{pesanSukses}</div>
+        <div className="bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 text-xs md:text-sm p-4 rounded-xl mb-6 flex items-center justify-between gap-3 shadow-sm">
+          <div className="flex items-center gap-2">
+            <span className="text-lg">✅</span>
+            <div>{pesanSukses}</div>
+          </div>
           <button
             onClick={() => setPesanSukses(null)}
-            className="btn-close-alert"
+            className="text-emerald-600 hover:text-emerald-800 font-bold px-2 py-1 cursor-pointer"
           >
             ✕
           </button>
@@ -514,63 +534,68 @@ function PMB() {
       <FormPMB onSubmitPMB={handleTambahPendaftar} />
 
       {/* Statistik Ringkas Hasil dari useMemo */}
-      <div className="pmb-stats-dashboard">
-        <div className="pmb-stat-card card-total">
-          <div className="pmb-stat-top">
-            <span className="pmb-stat-icon">👥</span>
-            <span className="pmb-stat-tag">Terkonfirmasi</span>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 my-6">
+        <div className="bg-sky-50/80 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800/80 rounded-2xl p-5 shadow-sm">
+          <div className="flex justify-between items-center mb-2">
+            <span className="text-xl">👥</span>
+            <span className="text-[10px] font-bold bg-sky-100 dark:bg-sky-900 text-sky-800 dark:text-sky-200 px-2 py-0.5 rounded-full">Terkonfirmasi</span>
           </div>
-          <div className="pmb-stat-number">{statistik.total}</div>
-          <div className="pmb-stat-title">Total Pendaftar Masuk</div>
+          <div className="text-2xl md:text-3xl font-black text-sky-700 dark:text-sky-300 mb-0.5">{statistik.total}</div>
+          <div className="text-xs font-semibold text-slate-500 dark:text-slate-400">Total Pendaftar Masuk</div>
         </div>
 
-        <div className="pmb-stat-card card-scholarship">
-          <div className="pmb-stat-top">
-            <span className="pmb-stat-icon">⭐</span>
-            <span className="pmb-stat-tag">Prestasi & KIP</span>
+        <div className="bg-amber-50/80 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/80 rounded-2xl p-5 shadow-sm">
+          <div className="flex justify-between items-center mb-2">
+            <span className="text-xl">⭐</span>
+            <span className="text-[10px] font-bold bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 px-2 py-0.5 rounded-full">Prestasi & KIP</span>
           </div>
-          <div className="pmb-stat-number">{statistik.beasiswa}</div>
-          <div className="pmb-stat-title">Jalur Beasiswa / KIP</div>
+          <div className="text-2xl md:text-3xl font-black text-amber-700 dark:text-amber-300 mb-0.5">{statistik.beasiswa}</div>
+          <div className="text-xs font-semibold text-slate-500 dark:text-slate-400">Jalur Beasiswa / KIP</div>
         </div>
 
-        <div className="pmb-stat-card card-regular">
-          <div className="pmb-stat-top">
-            <span className="pmb-stat-icon">🎓</span>
-            <span className="pmb-stat-tag">Gelombang 1</span>
+        <div className="bg-slate-100/80 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-2xl p-5 shadow-sm">
+          <div className="flex justify-between items-center mb-2">
+            <span className="text-xl">🎓</span>
+            <span className="text-[10px] font-bold bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded-full">Gelombang 1</span>
           </div>
-          <div className="pmb-stat-number">{statistik.reguler}</div>
-          <div className="pmb-stat-title">Jalur Reguler</div>
+          <div className="text-2xl md:text-3xl font-black text-slate-800 dark:text-slate-200 mb-0.5">{statistik.reguler}</div>
+          <div className="text-xs font-semibold text-slate-500 dark:text-slate-400">Jalur Reguler</div>
         </div>
 
-        <div className="pmb-stat-card card-quota">
-          <div className="pmb-stat-top">
-            <span className="pmb-stat-icon">🔥</span>
-            <span className="pmb-stat-tag">Sisa Kuota</span>
+        <div className="bg-emerald-50/80 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/80 rounded-2xl p-5 shadow-sm">
+          <div className="flex justify-between items-center mb-2">
+            <span className="text-xl">🔥</span>
+            <span className="text-[10px] font-bold bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 px-2 py-0.5 rounded-full">Sisa Kuota</span>
           </div>
-          <div className="pmb-stat-number">{statistik.sisaKuota}</div>
-          <div className="pmb-stat-title">Kursi Tersedia</div>
+          <div className="text-2xl md:text-3xl font-black text-emerald-700 dark:text-emerald-300 mb-0.5">{statistik.sisaKuota}</div>
+          <div className="text-xs font-semibold text-slate-500 dark:text-slate-400">Kursi Tersedia</div>
         </div>
       </div>
 
       {/* Filter Pencarian (useState & useMemo) & Tombol Reset (useReducer) */}
-      <div className="table-controls-bar">
-        <div className="search-input-wrap">
-          <span className="search-icon">🔍</span>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 my-4">
+        <div className="relative flex-1 max-w-sm">
+          <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs">🔍</span>
           <input
             type="text"
-            placeholder="Cari berdasarkan nama mahasiswa, sekolah, atau program studi..."
+            placeholder="Cari berdasarkan nama, sekolah, atau prodi..."
             value={keywordCari}
             onChange={(e) => setKeywordCari(e.target.value)}
-            className="search-input-field"
+            className="w-full pl-9 pr-8 py-2 border border-slate-300 dark:border-slate-600 rounded-xl text-xs md:text-sm bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
           />
           {keywordCari && (
-            <button onClick={() => setKeywordCari('')} className="btn-clear-search">✕</button>
+            <button
+              onClick={() => setKeywordCari('')}
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs font-bold cursor-pointer"
+            >
+              ✕
+            </button>
           )}
         </div>
 
-        <div className="table-actions-right">
-          <span className="filter-count-badge">
-            Menampilkan <strong>{pendaftarTerfilter.length}</strong> dari <strong>{dataPendaftar.length}</strong> pendaftar
+        <div className="flex items-center gap-3">
+          <span className="text-xs text-slate-500 dark:text-slate-400">
+            Menampilkan <strong className="text-slate-800 dark:text-slate-200">{pendaftarTerfilter.length}</strong> dari {dataPendaftar.length} pendaftar
           </span>
 
           <button
@@ -581,7 +606,7 @@ function PMB() {
                 setPesanSukses('Data pendaftar berhasil direset ke data awal bawaan.')
               }
             }}
-            className="btn-reset-data"
+            className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold transition-colors cursor-pointer"
             title="Kembalikan data ke contoh awal"
           >
             🔄 Reset Data Bawaan
@@ -589,7 +614,7 @@ function PMB() {
         </div>
       </div>
 
-      {/* Tabel Data Pendaftar (Props onHapus menggunakan useCallback) */}
+      {/* Tabel Data Pendaftar */}
       <TablePMB data={pendaftarTerfilter} onHapus={handleHapusPendaftar} />
     </div>
   )

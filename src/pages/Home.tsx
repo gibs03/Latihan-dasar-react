@@ -7,27 +7,27 @@ function Home({ onPindahKePMB }: HomeProps) {
     {
       step: '01',
       title: 'Isi Formulir Online',
-      desc: 'Lengkapi identitas diri, asal sekolah, dan pilih program studi impian Anda di menu PMB.',
-      icon: '📝'
+      desc: 'Lengkapi identitas diri, asal sekolah, dan pilih program studi impian Anda di portal PMB.',
+      icon: '📝',
     },
     {
       step: '02',
       title: 'Verifikasi & Kontak WA',
-      desc: 'Panitia PMB akan menghubungi Anda via WhatsApp untuk validasi data dan pengarahan berkas.',
-      icon: '📲'
+      desc: 'Panitia PMB akan menghubungi Anda via WhatsApp untuk validasi berkas dan konsultasi prodi.',
+      icon: '📲',
     },
     {
       step: '03',
       title: 'Tes / Seleksi Beasiswa',
-      desc: 'Ikuti tes potensi akademik online atau penilaian berkas rapor untuk jalur beasiswa prestasi.',
-      icon: '🎯'
+      desc: 'Ikuti asesmen potensi akademik online atau penilaian berkas rapor untuk jalur beasiswa.',
+      icon: '🎯',
     },
     {
       step: '04',
       title: 'Registrasi Ulang & NIM',
-      desc: 'Konfirmasi kelulusan, penerbitan Nomor Induk Mahasiswa (NIM), dan siap mengikuti perkuliahan!',
-      icon: '🎓'
-    }
+      desc: 'Konfirmasi kelulusan, penerbitan Nomor Induk Mahasiswa (NIM), dan resmi menjadi civitas Jayanusa!',
+      icon: '🎓',
+    },
   ]
 
   const testimoniAlumni = [
@@ -36,70 +36,92 @@ function Home({ onPindahKePMB }: HomeProps) {
       lulusan: 'Alumni S1 Sistem Informasi (Angkatan 2020)',
       posisi: 'Fullstack Software Engineer di PT Telkom Indonesia',
       foto: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
-      pesan: 'Kurikulum praktikal di Jayanusa benar-benar relevan dengan kebutuhan dunia kerja. Dosen selalu membimbing praktik langsung, sehingga saat lulus saya langsung dipercaya memegang proyek IT berskala nasional.'
+      pesan: 'Kurikulum praktikal di Jayanusa benar-benar relevan dengan kebutuhan dunia kerja. Dosen selalu membimbing praktik coding langsung, sehingga saat lulus saya langsung dipercaya memegang proyek IT berskala nasional.',
     },
     {
       nama: 'Nadhira Rahmadani, S.Tr.Bns.',
       lulusan: 'Alumni D4 Bisnis Digital (Angkatan 2021)',
       posisi: 'Senior Digital Strategist di E-Commerce Global & Founder Startup',
       foto: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80',
-      pesan: 'Di Jayanusa, saya tidak hanya belajar teori bisnis tetapi diajarkan cara mengeksekusi digital ads, analitik data, dan branding secara langsung. Lingkungan belajarnya sangat suportif untuk berinovasi.'
+      pesan: 'Di Jayanusa, saya tidak hanya belajar teori bisnis tetapi diajarkan cara mengeksekusi digital ads, analitik data, dan branding secara langsung. Lingkungan belajarnya sangat suportif untuk berinovasi.',
     },
     {
       nama: 'Bayu Pratama, A.Md.Kom.',
       lulusan: 'Alumni D3 Manajemen Informatika (Angkatan 2022)',
       posisi: 'IT Infrastructure & Database Administrator di Bank Nagari',
       foto: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
-      pesan: 'Kuliah 3 tahun langsung kerja! Sertifikasi keahlian BNSP yang saya dapatkan selama kuliah di Universitas Jayanusa menjadi nilai jual utama saat seleksi rekrutmen perbankan.'
-    }
+      pesan: 'Kuliah 3 tahun langsung kerja! Sertifikasi keahlian BNSP yang saya dapatkan selama kuliah di Universitas Jayanusa menjadi nilai jual utama saat seleksi rekrutmen perbankan.',
+    },
   ]
 
   return (
-    <div className="page-card">
-      {/* Hero Section dengan Gambar Mahasiswa */}
-      <div className="hero-grid-wrapper">
-        <div className="hero-content-col">
-          <div className="hero-pill-badge">
-            <span className="hero-pulse"></span>
+    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-10 shadow-sm transition-colors duration-300">
+      {/* Hero Section dengan Tailwind CSS */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-gradient-to-br from-blue-50/80 via-slate-50 to-indigo-50/60 dark:from-slate-800/80 dark:via-slate-900 dark:to-blue-950/40 border border-blue-100 dark:border-blue-900/40 rounded-2xl p-6 md:p-10 shadow-sm relative overflow-hidden">
+        {/* Glow Ambient Blur */}
+        <div className="absolute -top-20 -right-20 w-72 h-72 bg-sky-400/15 dark:bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div className="lg:col-span-7 relative z-10">
+          <div className="inline-flex items-center gap-2 bg-blue-100 dark:bg-blue-900/60 text-blue-800 dark:text-blue-200 text-xs md:text-sm font-extrabold px-4 py-1.5 rounded-full mb-4 border border-blue-200 dark:border-blue-700">
+            <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 animate-ping"></span>
             🔥 PENERIMAAN MAHASISWA BARU T.A. 2026/2027
           </div>
-          <h1 className="hero-heading">
-            Wujudkan Karier Impian di Bidang Teknologi & Bisnis Digital
+
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white leading-tight mb-4 tracking-tight">
+            Wujudkan Karier Impian di Bidang{' '}
+            <span className="bg-gradient-to-r from-blue-700 via-sky-600 to-emerald-600 dark:from-sky-400 dark:via-blue-300 dark:to-emerald-400 bg-clip-text text-transparent">
+              Teknologi & Bisnis Digital
+            </span>
           </h1>
-          <p className="hero-lead">
-            Selamat datang di <strong>Universitas Jayanusa Padang</strong>. Kampus pelopor teknologi informasi di Sumatera Barat dengan kurikulum berbasis industri modern, laboratorium canggih, dan jaminan sertifikasi kompetensi kerja.
+
+          <p className="text-slate-600 dark:text-slate-300 text-sm md:text-base leading-relaxed mb-6 max-w-xl">
+            Selamat datang di <strong className="text-slate-900 dark:text-white font-bold">Universitas Jayanusa Padang</strong>. Kampus pelopor teknologi informasi di Sumatera Barat dengan kurikulum berbasis industri modern, laboratorium canggih, dan jaminan sertifikasi kompetensi kerja.
           </p>
 
-          <div className="hero-cta-group">
+          <div className="flex flex-wrap items-center gap-4 mb-6">
             {onPindahKePMB && (
-              <button className="btn-cta-pmb" onClick={onPindahKePMB}>
-                Daftar PMB Sekarang ➜
+              <button
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-gradient-to-r from-[#0f2e59] to-[#1e4b8a] hover:from-[#091a33] hover:to-[#163b6e] text-white text-sm md:text-base font-extrabold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer"
+                onClick={onPindahKePMB}
+              >
+                <span>📝</span> Daftar PMB Sekarang ➜
               </button>
             )}
-            <div className="hero-secondary-badge">
-              <span>💳 Bebas Biaya Pendaftaran Online</span>
+            <div className="text-xs md:text-sm font-bold text-sky-700 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/60 px-4 py-3 rounded-xl border border-dashed border-sky-300 dark:border-sky-800">
+              💳 Bebas Biaya Pendaftaran Online
             </div>
           </div>
 
-          <div className="hero-trust-row">
-            <span className="trust-item">✓ Terakreditasi BAN-PT</span>
-            <span className="trust-item">✓ Dosen Praktisi Industri</span>
-            <span className="trust-item">✓ Program KIP Kuliah Resmi</span>
+          <div className="flex flex-wrap gap-4 text-xs md:text-sm font-semibold text-slate-500 dark:text-slate-400">
+            <span className="inline-flex items-center gap-1.5"><strong className="text-emerald-600 dark:text-emerald-400 font-extrabold">✓</strong> Terakreditasi BAN-PT</span>
+            <span className="inline-flex items-center gap-1.5"><strong className="text-emerald-600 dark:text-emerald-400 font-extrabold">✓</strong> Dosen Praktisi Industri</span>
+            <span className="inline-flex items-center gap-1.5"><strong className="text-emerald-600 dark:text-emerald-400 font-extrabold">✓</strong> Program KIP Kuliah Resmi</span>
           </div>
         </div>
 
-        <div className="hero-image-col">
-          <div className="hero-image-frame">
+        <div className="lg:col-span-5 relative z-10">
+          <div className="relative">
+            {/* Floating Glass Badge Atas */}
+            <div className="absolute -top-3 -right-2 md:right-2 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-white/80 dark:border-slate-700 rounded-xl px-3.5 py-2 shadow-xl flex items-center gap-2.5 z-20">
+              <span className="text-xl">⭐</span>
+              <div>
+                <strong className="block text-xs font-bold text-slate-900 dark:text-white">Akreditasi Baik Sekali</strong>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 m-0">BAN-PT Kemendikbudristek</p>
+              </div>
+            </div>
+
             <img
               src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80"
               alt="Mahasiswa Universitas Jayanusa Belajar Bersama"
-              className="hero-campus-img"
+              className="w-full h-64 sm:h-72 md:h-80 object-cover rounded-2xl shadow-xl border-4 border-white dark:border-slate-800"
             />
-            <div className="hero-floating-tag">
-              <span className="tag-emoji">🎓</span>
+
+            {/* Floating Glass Badge Bawah */}
+            <div className="absolute -bottom-3 left-2 md:left-4 bg-white/95 dark:bg-slate-800/95 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-xl p-3 shadow-xl flex items-center gap-3 z-20">
+              <span className="text-2xl">🎓</span>
               <div>
-                <strong>Gelombang 1 Dibuka</strong>
-                <p>Beasiswa Potongan UKT s/d 50%</p>
+                <strong className="block text-xs md:text-sm font-extrabold text-[#0f2e59] dark:text-white">Gelombang 1 Dibuka</strong>
+                <p className="text-[11px] md:text-xs text-amber-600 dark:text-amber-400 font-bold m-0">Beasiswa Potongan UKT s/d 50%</p>
               </div>
             </div>
           </div>
@@ -107,206 +129,267 @@ function Home({ onPindahKePMB }: HomeProps) {
       </div>
 
       {/* Statistik Prestasi Kampus */}
-      <div className="stats-grid">
-        <div className="stat-card">
-          <div className="stat-icon-wrap">💼</div>
-          <div className="stat-number">94%</div>
-          <div className="stat-text">Lulusan Bekerja &lt; 6 Bulan</div>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 my-8">
+        <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+          <div className="w-12 h-12 bg-sky-100 dark:bg-sky-950/60 text-sky-600 dark:text-sky-400 rounded-xl flex items-center justify-center text-xl mx-auto mb-3">💼</div>
+          <div className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mb-1">94%</div>
+          <div className="text-xs md:text-sm font-semibold text-slate-500 dark:text-slate-400">Lulusan Bekerja &lt; 6 Bulan</div>
         </div>
-        <div className="stat-card">
-          <div className="stat-icon-wrap">🎓</div>
-          <div className="stat-number">5</div>
-          <div className="stat-text">Program Studi Favorit (S1/D4/D3)</div>
+
+        <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+          <div className="w-12 h-12 bg-purple-100 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 rounded-xl flex items-center justify-center text-xl mx-auto mb-3">🎓</div>
+          <div className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mb-1">5</div>
+          <div className="text-xs md:text-sm font-semibold text-slate-500 dark:text-slate-400">Program Studi Unggulan</div>
         </div>
-        <div className="stat-card">
-          <div className="stat-icon-wrap">🏛️</div>
-          <div className="stat-number">Baik Sekali</div>
-          <div className="stat-text">Akreditasi Resmi BAN-PT</div>
+
+        <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+          <div className="w-12 h-12 bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 rounded-xl flex items-center justify-center text-xl mx-auto mb-3">🏛️</div>
+          <div className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mb-1">Baik Sekali</div>
+          <div className="text-xs md:text-sm font-semibold text-slate-500 dark:text-slate-400">Akreditasi Resmi BAN-PT</div>
         </div>
-        <div className="stat-card">
-          <div className="stat-icon-wrap">🤝</div>
-          <div className="stat-number">50+</div>
-          <div className="stat-text">Mitra Kerja BUMN & Perbankan</div>
+
+        <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+          <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center text-xl mx-auto mb-3">🤝</div>
+          <div className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mb-1">50+</div>
+          <div className="text-xs md:text-sm font-semibold text-slate-500 dark:text-slate-400">Mitra BUMN & Perbankan</div>
         </div>
       </div>
 
       {/* Alur Pendaftaran PMB 4 Langkah */}
-      <div className="flow-section-wrapper">
-        <div className="section-header-centered">
-          <span className="subhead-pill">PROSES MUDAH & CEPAT</span>
-          <h3 className="section-title">Alur Pendaftaran PMB 2026/2027</h3>
-          <p className="section-desc">
+      <div className="bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-6 md:p-8 my-8">
+        <div className="text-center max-w-xl mx-auto mb-8">
+          <span className="inline-block bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 text-xs font-bold px-3 py-1 rounded-full mb-2">
+            PROSES MUDAH & CEPAT
+          </span>
+          <h3 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white mb-2">
+            Alur Pendaftaran PMB 2026/2027
+          </h3>
+          <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400">
             Empat langkah sederhana untuk resmi menjadi mahasiswa Universitas Jayanusa Padang:
           </p>
         </div>
 
-        <div className="flow-steps-grid">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {alurPendaftaran.map((item, idx) => (
-            <div key={idx} className="flow-step-card">
-              <div className="step-number-tag">{item.step}</div>
-              <div className="step-icon">{item.icon}</div>
-              <h4 className="step-title">{item.title}</h4>
-              <p className="step-desc">{item.desc}</p>
+            <div
+              key={idx}
+              className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 relative overflow-hidden"
+            >
+              <div className="absolute top-3 right-3 text-lg font-black text-slate-200 dark:text-slate-700">
+                {item.step}
+              </div>
+              <div className="text-3xl mb-3">{item.icon}</div>
+              <h4 className="text-base font-bold text-slate-900 dark:text-white mb-1.5">{item.title}</h4>
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed m-0">{item.desc}</p>
             </div>
           ))}
         </div>
 
         {onPindahKePMB && (
-          <div style={{ textAlign: 'center', marginTop: '20px' }}>
-            <button className="btn-cta-pmb" onClick={onPindahKePMB}>
-              Mulai Pendaftaran Online Sekarang ➜
+          <div className="text-center mt-6">
+            <button
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#0f2e59] to-[#1e4b8a] hover:from-[#091a33] hover:to-[#163b6e] text-white text-sm font-extrabold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
+              onClick={onPindahKePMB}
+            >
+              <span>🚀</span> Mulai Pendaftaran Online Sekarang ➜
             </button>
           </div>
         )}
       </div>
 
       {/* Galeri Suasana Kampus & Fasilitas */}
-      <div style={{ marginTop: '36px', marginBottom: '30px' }}>
-        <div className="section-header-centered">
-          <span className="subhead-pill">FASILITAS MODERN</span>
-          <h3 className="section-title">Galeri Fasilitas Pembelajaran Kampus</h3>
-          <p className="section-desc">
+      <div className="my-10">
+        <div className="text-center max-w-xl mx-auto mb-8">
+          <span className="inline-block bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 text-xs font-bold px-3 py-1 rounded-full mb-2">
+            FASILITAS MODERN
+          </span>
+          <h3 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white mb-2">
+            Galeri Fasilitas Pembelajaran Kampus
+          </h3>
+          <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400">
             Didukung sarana prasarana mutakhir untuk menjamin proses belajar mengajar optimal di pusat Kota Padang.
           </p>
         </div>
 
-        <div className="gallery-grid">
-          <div className="gallery-card">
-            <div className="gallery-img-box">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="group bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
+            <div className="relative overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80"
                 alt="Laboratorium Pemrograman Komputer"
-                className="gallery-img"
+                className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <span className="gallery-tag">Laboratorium</span>
+              <span className="absolute top-3 left-3 bg-[#0f2e59]/85 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-md">
+                Laboratorium
+              </span>
             </div>
-            <div className="gallery-caption">
-              <strong>Lab Pemrograman & Cloud Computing</strong>
-              <span>Dilengkapi PC berspesifikasi tinggi, akses internet gigabit, dan software rekayasa perangkat lunak berlisensi.</span>
+            <div className="p-5">
+              <strong className="block text-base font-bold text-slate-900 dark:text-white mb-1.5">
+                Lab Pemrograman & Cloud Computing
+              </strong>
+              <span className="block text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Dilengkapi PC berspesifikasi tinggi, akses internet gigabit, dan software rekayasa perangkat lunak berlisensi.
+              </span>
             </div>
           </div>
 
-          <div className="gallery-card">
-            <div className="gallery-img-box">
+          <div className="group bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
+            <div className="relative overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=600&q=80"
                 alt="Perpustakaan & Ruang Belajar Digital"
-                className="gallery-img"
+                className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <span className="gallery-tag">Perpustakaan</span>
+              <span className="absolute top-3 left-3 bg-[#0f2e59]/85 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-md">
+                Perpustakaan
+              </span>
             </div>
-            <div className="gallery-caption">
-              <strong>Digital Library & Coworking Hub</strong>
-              <span>Akses ke puluhan ribu e-book, jurnal ilmiah internasional IEEE/Scopus, serta area kolaborasi proyek mahasiswa yang nyaman.</span>
+            <div className="p-5">
+              <strong className="block text-base font-bold text-slate-900 dark:text-white mb-1.5">
+                Digital Library & Coworking Hub
+              </strong>
+              <span className="block text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Akses ke puluhan ribu e-book, jurnal ilmiah internasional IEEE/Scopus, serta area kolaborasi proyek mahasiswa.
+              </span>
             </div>
           </div>
 
-          <div className="gallery-card">
-            <div className="gallery-img-box">
+          <div className="group bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
+            <div className="relative overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=600&q=80"
                 alt="Wisuda dan Karier Mahasiswa"
-                className="gallery-img"
+                className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <span className="gallery-tag">Karier</span>
+              <span className="absolute top-3 left-3 bg-[#0f2e59]/85 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-md">
+                Karier
+              </span>
             </div>
-            <div className="gallery-caption">
-              <strong>Wisuda & Pusat Pengembangan Karier</strong>
-              <span>Penyelenggaraan job fair berkala, pelatihan sertifikasi BNSP, dan pendampingan karier profesional mahasiswa.</span>
+            <div className="p-5">
+              <strong className="block text-base font-bold text-slate-900 dark:text-white mb-1.5">
+                Wisuda & Career Development Center
+              </strong>
+              <span className="block text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                Penyelenggaraan job fair berkala, pelatihan sertifikasi BNSP, dan pendampingan karier profesional mahasiswa.
+              </span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Keunggulan Kampus */}
-      <div style={{ marginTop: '36px', marginBottom: '30px' }}>
-        <div className="section-header-centered">
-          <span className="subhead-pill">KEUNGGULAN UTAMA</span>
-          <h3 className="section-title">Kenapa Kuliah di Universitas Jayanusa?</h3>
-          <p className="section-desc">
+      <div className="my-10">
+        <div className="text-center max-w-xl mx-auto mb-8">
+          <span className="inline-block bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 text-xs font-bold px-3 py-1 rounded-full mb-2">
+            KEUNGGULAN UTAMA
+          </span>
+          <h3 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white mb-2">
+            Kenapa Kuliah di Universitas Jayanusa?
+          </h3>
+          <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400">
             Enam alasan utama mengapa ribuan calon mahasiswa memilih Universitas Jayanusa setiap tahunnya:
           </p>
         </div>
 
-        <div className="features-grid">
-          <div className="feature-box">
-            <div className="feature-icon-box">💻</div>
-            <h4>Kurikulum Siap Kerja 70:30</h4>
-            <p>70% porsi praktik lab dan 30% teori, dirancang bersama praktisi industri teknologi dan bisnis digital masa kini.</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-blue-400 transition-all duration-300">
+            <div className="w-12 h-12 bg-sky-100 dark:bg-sky-950/60 text-sky-600 dark:text-sky-400 rounded-xl flex items-center justify-center text-2xl mb-4">💻</div>
+            <h4 className="text-base font-bold text-slate-900 dark:text-white mb-2">Kurikulum Siap Kerja 70:30</h4>
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed m-0">70% porsi praktik lab dan 30% teori, dirancang bersama praktisi industri teknologi dan bisnis digital masa kini.</p>
           </div>
 
-          <div className="feature-box">
-            <div className="feature-icon-box">🖥️</div>
-            <h4>Laboratorium Komputer Lengkap</h4>
-            <p>Lab iMac, Cisco networking lab, dan ruang komputasi awan yang siap melatih keahlian teknis mahasiswa.</p>
+          <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-blue-400 transition-all duration-300">
+            <div className="w-12 h-12 bg-purple-100 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 rounded-xl flex items-center justify-center text-2xl mb-4">🖥️</div>
+            <h4 className="text-base font-bold text-slate-900 dark:text-white mb-2">Laboratorium Lengkap</h4>
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed m-0">Lab komputer canggih, networking lab, dan ruang komputasi awan yang siap melatih keahlian teknis mahasiswa.</p>
           </div>
 
-          <div className="feature-box">
-            <div className="feature-icon-box">💰</div>
-            <h4>Biaya Terjangkau & Bisa Dicicil</h4>
-            <p>Sistem pembayaran SPP fleksibel yang dapat diangsur per bulan tanpa bunga, meringankan beban orang tua.</p>
+          <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-blue-400 transition-all duration-300">
+            <div className="w-12 h-12 bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 rounded-xl flex items-center justify-center text-2xl mb-4">💰</div>
+            <h4 className="text-base font-bold text-slate-900 dark:text-white mb-2">Biaya Bisa Dicicil</h4>
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed m-0">Sistem pembayaran SPP fleksibel yang dapat diangsur per bulan tanpa bunga, meringankan beban orang tua.</p>
           </div>
 
-          <div className="feature-box">
-            <div className="feature-icon-box">📜</div>
-            <h4>Sertifikasi Kompetensi BNSP</h4>
-            <p>Setiap lulusan dibekali sertifikat kompetensi profesi berstandar nasional dan internasional sebagai modal melamar kerja.</p>
+          <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-blue-400 transition-all duration-300">
+            <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center text-2xl mb-4">📜</div>
+            <h4 className="text-base font-bold text-slate-900 dark:text-white mb-2">Sertifikasi BNSP</h4>
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed m-0">Setiap lulusan dibekali sertifikat kompetensi profesi berstandar nasional dan internasional sebagai modal melamar kerja.</p>
           </div>
 
-          <div className="feature-box">
-            <div className="feature-icon-box">🤝</div>
-            <h4>Jaminan Penyaluran Kerja & Magang</h4>
-            <p>Kemitraan resmi dengan perbankan, BUMN, instansi pemerintahan, dan perusahaan startup di Padang dan Jakarta.</p>
+          <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-blue-400 transition-all duration-300">
+            <div className="w-12 h-12 bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center text-2xl mb-4">🤝</div>
+            <h4 className="text-base font-bold text-slate-900 dark:text-white mb-2">Penyaluran Kerja & Magang</h4>
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed m-0">Kemitraan resmi dengan perbankan, BUMN, instansi pemerintahan, dan perusahaan startup di Padang dan Jakarta.</p>
           </div>
 
-          <div className="feature-box">
-            <div className="feature-icon-box">📍</div>
-            <h4>Lokasi Strategis di Pusat Kota</h4>
-            <p>Berlokasi tepat di Jl. Damar No. 69, sangat dekat dengan pusat transportasi, perbelanjaan, dan fasilitas umum Kota Padang.</p>
+          <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-blue-400 transition-all duration-300">
+            <div className="w-12 h-12 bg-rose-100 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 rounded-xl flex items-center justify-center text-2xl mb-4">📍</div>
+            <h4 className="text-base font-bold text-slate-900 dark:text-white mb-2">Lokasi di Pusat Kota</h4>
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed m-0">Berlokasi tepat di Jl. Damar No. 69, sangat dekat dengan pusat transportasi, perbelanjaan, dan fasilitas umum Kota Padang.</p>
           </div>
         </div>
       </div>
 
       {/* Testimoni Alumni */}
-      <div className="testimonials-section">
-        <div className="section-header-centered">
-          <span className="subhead-pill">BUKTI NYATA</span>
-          <h3 className="section-title">Kisah Sukses Alumni Universitas Jayanusa</h3>
-          <p className="section-desc">
+      <div className="my-10 bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/60 rounded-2xl p-6 md:p-8">
+        <div className="text-center max-w-xl mx-auto mb-8">
+          <span className="inline-block bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 text-xs font-bold px-3 py-1 rounded-full mb-2">
+            BUKTI NYATA
+          </span>
+          <h3 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white mb-2">
+            Kisah Sukses Alumni Universitas Jayanusa
+          </h3>
+          <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400">
             Dengarkan langsung cerita mereka yang kini telah sukses berkarier di berbagai sektor industri:
           </p>
         </div>
 
-        <div className="testimonials-grid">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimoniAlumni.map((item, idx) => (
-            <div key={idx} className="testi-card">
-              <div className="testi-header">
-                <img src={item.foto} alt={item.nama} className="testi-avatar" />
-                <div>
-                  <h5 className="testi-author-name">{item.nama}</h5>
-                  <p className="testi-author-prodi">{item.lulusan}</p>
-                  <span className="testi-position-badge">{item.posisi}</span>
+            <div
+              key={idx}
+              className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm relative overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow duration-300"
+            >
+              <div>
+                <div className="flex items-center gap-3.5 mb-3">
+                  <img src={item.foto} alt={item.nama} className="w-12 h-12 rounded-full object-cover border-2 border-blue-500" />
+                  <div>
+                    <h5 className="text-sm font-bold text-slate-900 dark:text-white m-0">{item.nama}</h5>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400 m-0">{item.lulusan}</p>
+                    <span className="inline-block bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800 mt-1">
+                      {item.posisi}
+                    </span>
+                  </div>
                 </div>
+                <div className="text-xs text-amber-500 mb-2">⭐⭐⭐⭐⭐</div>
+                <blockquote className="text-xs text-slate-600 dark:text-slate-300 italic leading-relaxed m-0">
+                  "{item.pesan}"
+                </blockquote>
               </div>
-              <blockquote className="testi-quote">
-                "{item.pesan}"
-              </blockquote>
             </div>
           ))}
         </div>
       </div>
 
       {/* Banner Call to Action Siap Pakai */}
-      <div className="cta-banner-ready">
-        <div className="cta-banner-content">
-          <span className="cta-badge-pill">KUOTA TERBATAS</span>
-          <h3 className="cta-banner-title">Siap Menjadi Ahli IT & Bisnis Digital Berikutnya?</h3>
-          <p className="cta-banner-desc">
+      <div className="bg-gradient-to-r from-[#091a33] via-[#0f2e59] to-[#1e4b8a] text-white p-8 md:p-10 rounded-2xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
+        <div className="max-w-xl">
+          <span className="inline-block bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold px-3 py-1 rounded-full mb-3">
+            🔥 KUOTA TERBATAS GELOMBANG 1
+          </span>
+          <h3 className="text-xl md:text-2xl font-black mb-2">
+            Siap Menjadi Ahli IT & Bisnis Digital Berikutnya?
+          </h3>
+          <p className="text-xs md:text-sm text-slate-200 leading-relaxed m-0">
             Pendaftaran Gelombang 1 tahun akademik 2026/2027 sedang dibuka. Dapatkan potongan biaya kuliah dan kesempatan beasiswa penuh!
           </p>
         </div>
+
         {onPindahKePMB && (
-          <button className="btn-cta-white" onClick={onPindahKePMB}>
+          <button
+            className="px-6 py-3.5 bg-white hover:bg-slate-100 text-[#0f2e59] font-extrabold text-sm md:text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer shrink-0"
+            onClick={onPindahKePMB}
+          >
             Daftar Sekarang Juga ➜
           </button>
         )}

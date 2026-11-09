@@ -35,7 +35,7 @@ function Home({ onPindahKePMB }: HomeProps) {
       nama: 'Fajar Nugraha, S.Kom.',
       lulusan: 'Alumni S1 Sistem Informasi (Angkatan 2020)',
       posisi: 'Fullstack Software Engineer di PT Telkom Indonesia',
-      foto: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+      foto: 'https://images.unsplash.com/photo-153452874177 5-53994a69daeb?auto=format&fit=crop&w=300&q=80',
       pesan: 'Kurikulum praktikal di Jayanusa benar-benar relevan dengan kebutuhan dunia kerja. Dosen selalu membimbing praktik coding langsung, sehingga saat lulus saya langsung dipercaya memegang proyek IT berskala nasional.',
     },
     {
